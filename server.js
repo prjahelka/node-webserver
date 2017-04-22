@@ -61,6 +61,12 @@ app.get('/about', (req, res) => {
     });
 });
 
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page'
+    });
+});
+
 app.listen(port, () => {
     var dt = new Date;
     console.log(dt.toString(),
