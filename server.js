@@ -2,9 +2,11 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+var port = process.env.PORT || 3000;
 var app = express();
 
-var underMaintenance = true;
+var underMaintenance = false;
+
 app.use((req, res, next) => {
     if (underMaintenance) {
         res.render('maint.hbs', {
@@ -59,8 +61,8 @@ app.get('/about', (req, res) => {
     });
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
     var dt = new Date;
     console.log(dt.toString(),
-        'server is up and listeniing');
+        'server is up and listeniing on port', port);
 });
